@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Agendar Transferência</h2>
+
+  <form (ngSubmit)="agendarTransferencia()">
+    <div>
+      <label for="contaOrigem">Conta de Origem:</label>
+      <input id="contaOrigem" [(ngModel)]="transferencia.contaOrigem" name="contaOrigem" required>
+    </div>
+
+    <div>
+      <label for="contaDestino">Conta de Destino:</label>
+      <input id="contaDestino" [(ngModel)]="transferencia.contaDestino" name="contaDestino" required>
+    </div>
+
+    <div>
+      <label for="valor">Valor:</label>
+      <input id="valor" type="number" [(ngModel)]="transferencia.valor" name="valor" required>
+    </div>
+
+    <div>
+      <label for="dataTransferencia">Data da Transferência:</label>
+      <input id="dataTransferencia" type="date" [(ngModel)]="transferencia.dataTransferencia" name="dataTransferencia" required>
+    </div>
+
+    <button type="submit">Agendar Transferência</button>
+  </form>
+
+  <div *ngIf="taxaTransferencia !== null" class="taxa">
+    <p>Taxa da Transferência: {{ taxaTransferencia | currency:'BRL' }}</p>
+  </div>
+
+  <div *ngIf="mensagemErro" class="error">
+    {{ mensagemErro }}
+  </div>
+</div>
